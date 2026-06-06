@@ -1,0 +1,726 @@
+/* --- Global Styles --- */
+:root {
+    --bg-frame: #E6E4D5; 
+    --text-light: #FFFFFF;
+    --text-dark: #2A2A2A;
+    --font-serif: 'Playfair Display', serif;
+    --font-sans: 'Lato', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* Scrollbar Styling */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-frame); }
+::-webkit-scrollbar-thumb { background: #bfaea0; border-radius: 4px; }
+
+body {
+    background-color: var(--bg-frame); 
+    font-family: var(--font-sans);
+    padding: 20px; 
+    height: 100vh;
+    overflow: hidden; 
+}
+
+.site-wrapper {
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow-y: auto; /* Scroll inside border */
+    scroll-behavior: smooth;
+}
+
+/* --- NAVBAR --- */
+.navbar {
+    position: absolute;
+    top: 0; left: 0; width: 100%;
+    padding: 30px 50px;
+    display: flex; justify-content: space-between; align-items: center;
+    z-index: 100;
+}
+.nav-link {
+    text-decoration: none; color: #fff !important;
+    font-family: var(--font-sans);
+    text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;
+    margin: 0 15px; font-weight: 700;
+    display: inline-flex; align-items: center; gap: 5px; 
+    text-shadow: 0 1px 5px rgba(0,0,0,0.5); 
+    cursor: pointer;
+}
+.nav-link:hover { opacity: 0.8; }
+
+/* --- HERO SECTION --- */
+.hero {
+    position: relative; width: 100%;
+    height: calc(100vh - 40px); 
+    overflow: hidden; background-color: #bfaea0; 
+}
+.hero-image { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
+.hero-image img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center 25%;
+    filter: brightness(0.8);
+}
+.hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 2; }
+.headline-top { position: absolute; top: 15%; left: 50px; color: #fff; z-index: 10; }
+.headline-top h1 { font-family: var(--font-serif); font-size: 3rem; font-weight: 400; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+.italic { font-style: italic; font-family: var(--font-serif); }
+.oval-btn-container { position: absolute; pointer-events: all; z-index: 20; }
+.top-left { top: 28%; left: 50px; }
+.oval-btn {
+    display: inline-block; padding: 12px 35px;
+    border: 1px solid #fff; border-radius: 50px;
+    color: #fff; text-decoration: none; text-transform: uppercase;
+    font-size: 0.75rem; letter-spacing: 1px; transition: 0.3s;
+    background: rgba(255,255,255,0.1); backdrop-filter: blur(5px);
+}
+.oval-btn:hover { background: #fff; color: #000; }
+.brand-name {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%; text-align: center; z-index: 5;
+}
+.brand-name span {
+    font-family: var(--font-serif); font-size: 16vw; color: #fff;
+    line-height: 1; letter-spacing: -5px;
+    text-shadow: 0 0 30px rgba(0,0,0,0.4); 
+}
+.hero-desc {
+    position: absolute; bottom: 60px; left: 50px; color: #f0f0f0;
+    font-size: 0.9rem; line-height: 1.6; max-width: 300px;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+.hero-sub {
+    position: absolute; top: 50%; right: 50px; color: #f0f0f0;
+    font-size: 0.75rem; text-align: right; text-transform: uppercase;
+    letter-spacing: 1px; text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+/* --- CONTENT SECTION --- */
+.content-section {
+    background-color: #F8F5F2; padding: 100px 20px;
+    text-align: center; color: var(--text-dark);
+}
+.mini-title { font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 30px; color: #666; font-weight: 700; }
+.editorial-text { font-family: var(--font-serif); font-size: 3rem; line-height: 1.3; margin-bottom: 50px; color: #1a1a1a; }
+.oval-btn.dark { border-color: #333; color: #333; background: transparent; }
+.oval-btn.dark:hover { background: #333; color: #fff; }
+
+/* 🔥 PRODUCT SECTION 🔥 */
+.product-section {
+    background-color: #fff;
+    padding: 80px 50px;
+    text-align: center;
+}
+.section-title {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    font-weight: 400;
+}
+.product-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+.product-card {
+    width: 300px;
+    text-align: left;
+}
+.p-image {
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+.p-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+.product-card:hover .p-image img {
+    transform: scale(1.05); /* Zoom effect on hover */
+}
+.p-info h4 {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+.price {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+.add-btn {
+    background: none;
+    border: 1px solid #333;
+    padding: 8px 20px;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+.add-btn:hover {
+    background: #333;
+    color: #fff;
+}
+
+/* 🔥 FOOTER 🔥 */
+/* --- PREMIUM FOOTER CSS --- */
+.site-footer {
+    background-color: #C7B19C; /* Aapka brand tan color */
+    color: #1a1a1a;
+    padding: 80px 8% 40px; /* Sides se space */
+    margin-top: 100px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.footer-col {
+    flex: 1;
+    min-width: 220px;
+}
+
+.footer-col h3, .footer-col h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+}
+
+.footer-col p {
+    font-size: 0.85rem;
+    line-height: 1.8;
+    color: #333;
+}
+
+.footer-col ul {
+    list-style: none; /* Bullets hatane ke liye */
+    padding: 0;
+}
+
+.footer-col ul li {
+    margin-bottom: 12px;
+}
+
+.footer-col ul li a {
+    text-decoration: none;
+    color: #1a1a1a;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+.footer-col ul li a:hover {
+    opacity: 0.5;
+}
+
+/* Newsletter Styling */
+.newsletter form {
+    display: flex;
+    border: 1px solid #1a1a1a;
+}
+
+.newsletter input {
+    background: transparent;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    outline: none;
+}
+
+.newsletter button {
+    background: #1a1a1a;
+    color: #fff;
+    border: none;
+    padding: 0 20px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.footer-bottom {
+    margin-top: 60px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    text-align: center;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    opacity: 0.7;
+}
+
+/* 🔥 DROPDOWN MENU STYLES 🔥 */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none; /* Hidden by default */
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 180px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+    z-index: 1000;
+    top: 100%; 
+    left: 0;
+    padding: 10px 0;
+    border-radius: 2px;
+}
+
+.dropdown-content a {
+    color: #333 !important; 
+    padding: 12px 20px;
+    text-decoration: none;
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    text-shadow: none !important; 
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.dropdown-content a:hover {
+    background-color: #f5f5f5;
+    color: #000 !important;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* =========================================
+   🛒 NEW CART PAGE STYLES
+   ========================================= */
+
+.cart-section {
+    padding: 120px 5% 50px; /* Top padding to avoid Navbar overlap */
+    min-height: 60vh;
+}
+
+.cart-title {
+    text-align: center;
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: var(--text-dark);
+}
+
+.cart-items-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding: 20px 0;
+    gap: 20px;
+}
+
+.cart-item .ci-image img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.cart-item .ci-details {
+    flex-grow: 1;
+}
+
+.cart-item h4 {
+    margin: 0 0 5px;
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    color: var(--text-dark);
+}
+
+.cart-item p {
+    margin: 0 0 10px;
+    font-weight: bold;
+    color: #555;
+    font-family: var(--font-sans);
+}
+
+.remove-btn {
+    background: transparent;
+    border: none;
+    text-decoration: underline;
+    color: #999;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+}
+
+.remove-btn:hover {
+    color: #d00;
+}
+
+.cart-summary {
+    max-width: 800px;
+    margin: 40px auto 0;
+    border-top: 1px solid #333;
+    padding-top: 20px;
+    text-align: right;
+}
+
+.total-row {
+    font-size: 1.5rem;
+    font-family: var(--font-serif);
+    margin-bottom: 20px;
+    color: var(--text-dark);
+}
+
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    body { padding: 10px; }
+    .hero { height: calc(100vh - 20px); }
+    .brand-name span { font-size: 20vw; }
+    .navbar { padding: 20px; }
+    .hero-desc, .hero-sub { display: none; }
+    .headline-top h1 { font-size: 2rem; }
+    .product-grid { flex-direction: column; align-items: center; }
+    .footer-container { flex-direction: column; gap: 30px; }
+    
+    .dropdown:hover .dropdown-content {
+        position: fixed; 
+        top: 60px;
+        left: 20px;
+    }
+}
+/* --- NEW MODERN CART STYLES (Screenshot Look) --- */
+
+.cart-container-modern {
+    max-width: 800px;
+    margin: 0 auto;       /* Margin top hata diya */
+    padding: 160px 20px 50px 20px; /* Top padding 160px kar di taake navbar k niche na aaye */
+}
+
+/* Har Product ka Card */
+.cart-card {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 12px; /* Gol koney */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03); /* Halka sa saya */
+    position: relative;
+}
+
+/* Image Styling */
+.cart-card-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #f9f9f9;
+    flex-shrink: 0;
+}
+.cart-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Text Detail Area */
+.cart-card-details {
+    flex: 1;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cart-card-details h4 {
+    font-family: 'Lato', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0 0 5px 0;
+    color: #1a1a1a;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cart-card-details .sub-text {
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 5px;
+}
+
+.cart-card-details .price {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+/* Right Side: Quantity & Delete */
+.cart-card-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    height: 80px; /* Image jitni height */
+}
+
+/* Quantity Pill (Screenshot jaisa) */
+.qty-pill {
+    display: flex;
+    align-items: center;
+    background-color: #f0f0f0;
+    border-radius: 20px;
+    padding: 5px 10px;
+    margin-top: auto; /* Bottom right par laane k liye */
+}
+
+.qty-pill span {
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    padding: 0 10px;
+    font-size: 0.9rem;
+}
+
+/* Delete Icon (Dustbin) */
+.delete-icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #555;
+    transition: color 0.3s;
+    padding: 5px;
+}
+.delete-icon-btn:hover {
+    color: #d9534f; /* Red on hover */
+}
+
+/* Summary Section (Total & Checkout) */
+.cart-bottom-summary {
+    margin-top: 40px;
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+    text-align: right;
+}
+.cart-total-display {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    display: block;
+}
+/* --- LUXURY PAGE REVEAL EFFECT --- */
+
+/* 1. The Curtain (Parda) */
+.page-transition-curtain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #f2f0eb; /* Aapka Theme Color */
+    z-index: 9999;
+    transform-origin: top;
+    transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1); /* Smooth Magic */
+}
+
+/* Jab animation start hogi to parda upar jayega */
+.reveal-page .page-transition-curtain {
+    transform: translateY(-100%);
+}
+
+/* 2. Hero Image Zoom Effect (Parde k peeche) */
+/* Aapki hero image shuru mein thodi Zoom hogi */
+.hero-image img {
+    transform: scale(1.3); /* 1.3x Zoom */
+    transition: transform 2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+}
+
+/* Jab parda hatega to image normal size par aayegi */
+.reveal-page .hero-image img {
+    transform: scale(1);
+}
+
+/* 3. Text Animation (Neeche se upar aana) */
+.hero-overlay {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s ease-out;
+    transition-delay: 0.5s; /* Parda hatne k baad aayega */
+}
+
+.reveal-page .hero-overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* About Page Styles */
+ /* --- ABOUT INSPIRATION LAYOUT (Skincare Version) --- */
+
+/* --- ABOUT HERO (Solid Color Fix) --- */
+.about-insp-hero {
+    height: 70vh; 
+    
+    /* Background logic ab HTML se control ho raha hai */
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Text color Black (#1a1a1a) kiya hai kyunke background Beige hai */
+.about-insp-hero h1 {
+    color: #1a1a1a !important; 
+    font-family: var(--font-serif);
+    font-size: 4rem; 
+    margin-bottom: 10px;
+    /* Text Shadow hata diya taaki solid color par clean lage */
+    text-shadow: none !important; 
+}
+
+/* Breadcrumbs color Grey */
+.about-insp-hero .breadcrumbs {
+    color: #555 !important;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow: none !important;
+}
+
+.about-insp-hero .breadcrumbs span {
+    color: #888 !important;
+}
+
+/* 2. Story Section */
+.about-insp-story { padding: 100px 50px; background: #fff; }
+.story-container { display: flex; gap: 80px; align-items: center; max-width: 1200px; margin: 0 auto; }
+.story-img { flex: 1; }
+.story-img img { width: 100%; height: 500px; object-fit: cover; border-radius: 4px; }
+.story-text { flex: 1; }
+
+/* 3. Stats & Skills Section */
+.about-insp-stats { padding: 100px 50px; background: #F8F5F2; }
+.stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; max-width: 1200px; margin: 0 auto; }
+
+.skill-item { margin-bottom: 25px; }
+.skill-info { display: flex; justify-content: space-between; font-family: var(--font-sans); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; margin-bottom: 8px; }
+.skill-bar { height: 4px; background: #ddd; width: 100%; border-radius: 2px; }
+.bar-fill { height: 100%; background: #1a1a1a; border-radius: 2px; }
+
+.stats-right { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+.stat-box { background: #fff; padding: 40px 20px; text-align: center; border-radius: 4px; box-shadow: 0 5px 15px rgba(0,0,0,0.02); }
+.stat-box h2 { font-family: var(--font-serif); font-size: 2.5rem; color: #1a1a1a; margin-bottom: 5px; }
+.stat-box p { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: #888; }
+
+/* 4. CTA Section - Plain Beige (No Image) */
+.about-insp-cta {
+    height: 400px; /* Aap height kam ya zyada kar sakte hain */
+    background-color: #C7B19C; /* Yeh wahi Tan/Beige rang hai jo aapke footer ka hai */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Button styling taake beige par saaf nazar aaye */
+.about-insp-cta .oval-btn {
+    margin-top: 25px;
+    background: #1a1a1a !important; /* Dark button beige par zyada premium lagega */
+    color: #ffffff !important;
+    border: none !important;
+}
+
+.about-insp-cta .oval-btn:hover {
+    background: #ffffff !important;
+    color: #1a1a1a !important;
+}
+
+/* Text color fix */
+.about-insp-cta h2 {
+    color: #1a1a1a !important;
+    font-family: var(--font-serif);
+}
+
+.about-insp-cta h6 {
+    color: #555 !important;
+}
+
+@media (max-width: 900px) {
+    .story-container, .stats-grid { grid-template-columns: 1fr; flex-direction: column; }
+    .stats-grid { gap: 50px; }
+}
+/* --- CLINICAL EFFICACY SECTION STYLING --- */
+.brand-efficacy-section {
+    padding: 120px 8%;
+    background-color: #fff;
+}
+
+.efficacy-container {
+    display: flex;
+    gap: 80px;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.efficacy-video-box {
+    flex: 1.3;
+    position: relative;
+    height: 600px;
+    border-radius: 2px;
+    overflow: hidden;
+    background: #000;
+}
+
+.clinical-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.7);
+}
+
+.efficacy-overlays {
+    position: absolute;
+    bottom: 30px;
+    left: 10%;
+    right: 10%;
+    color: #fff;
+}
+
+.eff-item { margin-bottom: 25px; }
+.eff-head { display: flex; justify-content: space-between; font-size: 0.75rem; font-weight: 700; margin-bottom: 5px; letter-spacing: 1px; }
+.eff-item p { font-size: 0.7rem; opacity: 0.8; margin-bottom: 8px !important; color: #fff !important; }
+.eff-bar { height: 1px; background: rgba(255,255,255,0.3); width: 100%; }
+.eff-bar .fill { height: 100%; background: #fff; }
+
+.efficacy-text { flex: 1; }
+
+/* Responsive */
+@media (max-width: 900px) {
+    .efficacy-container { flex-direction: column; }
+    .efficacy-video-box { width: 100%; height: 500px; }
+}
+.contact-form input:focus, .contact-form textarea:focus {
+    border-color: #C7B19C !important; /* Tan color focus par aayega */
+}
+
+.contact-section {
+    min-height: 80vh;
+}
